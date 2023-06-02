@@ -58,7 +58,11 @@ const PizzaForm = () => {
       <form id="pizza-form" onSubmit={handleSubmit}>
         <label>
           Name
-          <input id="name-input" name="Name" value={formValues.Name} onChange={handleChanges} />
+          <input id="name-input" 
+          name="Name" 
+          value={formValues.Name} 
+          onChange={handleChanges} />
+          {nameError && <div>{nameError}</div>}
         </label>
         <label>
           Address
