@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import yup from 'yup';
+import schema from './valadation/formSchema'
 
 const PizzaForm = () => {
   const [formValues, setFormValues] = useState({
@@ -28,32 +30,32 @@ const PizzaForm = () => {
     }
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-
-    if (formValues.Name.length < 2) {
-      setNameError('Name must be at least 2 characters');
-      return;
-    }
-
-    try {
-        const res = 
-        await axios.post
-        ('https://reqres.in/api/orders', formValues)
-        console.log(res.data);
-
-        setFormValues({
-          Name: '',
-          address: '',
-          phoneNumber: '',
-          size: '',
-          toppings: [],
-          specialText: ''
-        });
-    } catch (err) {
-        console.log(err)
-    };
+  
+    schema.validate(formValues)
+      .then(() => {
+        
+        axios.post('https://reqres.in/api/orders', formValues)
+          .then(res => {
+            console.log(res.data);
+            setFormValues({
+              Name: '',
+              address: '',
+              phoneNumber: '',
+              size: '',
+              toppings: [],
+              specialText: ''
+            });
+          })
+          .catch(err => console.log(err));
+      })
+      .catch(err => {
+        console.log(err.errors);
+        setNameError(err.errors[0]);
+      });
   };
+  
 
   return (
     <div>
