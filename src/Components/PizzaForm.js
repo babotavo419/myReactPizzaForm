@@ -127,8 +127,8 @@ const PizzaForm = () => {
         type="submit">Add to Order
         </button>
     </div>
-    {nameError && <div>{nameError}</div>}
       </form>
+      {nameError && <div>{nameError}</div>}
     </div>
   );
 };
