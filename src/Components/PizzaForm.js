@@ -56,7 +56,7 @@ const PizzaForm = () => {
       <form id="pizza-form" onSubmit={handleSubmit}>
         <label>
           Customer Name
-          <input id="customer-name-input" name="customerName" value={formValues.customerName} onChange={handleChanges} />
+          <input id="name-input" name="customerName" value={formValues.customerName} onChange={handleChanges} />
         </label>
         <label>
           Address
