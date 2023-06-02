@@ -72,7 +72,6 @@ const PizzaForm = () => {
             onChange={handleChanges}
             />
     </label>
-            {nameError && <div>{nameError}</div>}
     </div>
     <div>
         <label>
@@ -128,6 +127,7 @@ const PizzaForm = () => {
         type="submit">Add to Order
         </button>
     </div>
+    {nameError && <div>{nameError}</div>}
       </form>
     </div>
   );
