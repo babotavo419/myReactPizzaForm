@@ -28,7 +28,7 @@ const PizzaForm = () => {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (formValues.Name.length < 2) {
@@ -36,8 +36,10 @@ const PizzaForm = () => {
       return;
     }
 
-    axios.post('https://reqres.in/api/orders', formValues)
-      .then(res => {
+    try {
+        const res = 
+        await axios.post
+        ('https://reqres.in/api/orders', formValues)
         console.log(res.data);
 
         setFormValues({
@@ -48,8 +50,9 @@ const PizzaForm = () => {
           toppings: [],
           specialText: ''
         });
-      })
-      .catch(err => console.log(err));
+    } catch (err) {
+        console.log(err)
+    };
   };
 
   return (
