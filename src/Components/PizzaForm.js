@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const PizzaForm = () => {
   const [formValues, setFormValues] = useState({
-    customerName: '',
+    Name: '',
     address: '',
     phoneNumber: '',
     size: '',
@@ -29,7 +29,7 @@ const PizzaForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (formValues.customerName.length < 2) {
+    if (formValues.Name.length < 2) {
       alert('Name must be at least 2 characters');
       return;
     }
@@ -39,7 +39,7 @@ const PizzaForm = () => {
         console.log(res.data);
 
         setFormValues({
-          customerName: '',
+          Name: '',
           address: '',
           phoneNumber: '',
           size: '',
@@ -55,8 +55,8 @@ const PizzaForm = () => {
       <h1>Big Tavo's Pizza</h1>
       <form id="pizza-form" onSubmit={handleSubmit}>
         <label>
-          Customer Name
-          <input id="name-input" name="customerName" value={formValues.customerName} onChange={handleChanges} />
+          Name
+          <input id="name-input" name="Name" value={formValues.Name} onChange={handleChanges} />
         </label>
         <label>
           Address
