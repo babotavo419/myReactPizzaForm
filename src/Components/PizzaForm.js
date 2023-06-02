@@ -11,6 +11,8 @@ const PizzaForm = () => {
     specialText: ''
   });
 
+  const [nameError, setNameError] = useState('');
+
   const handleChanges = (event) => {
  
     if (event.target.type === 'checkbox') {
@@ -30,11 +32,11 @@ const PizzaForm = () => {
     event.preventDefault();
 
     if (formValues.Name.length < 2) {
-      setNamError('Name must be at least 2 characters');
+      setNameError('Name must be at least 2 characters');
       return;
     }
 
-    setNamError('');
+    setNameError('');
 
     axios.post('https://reqres.in/api/orders', formValues)
       .then(res => {
