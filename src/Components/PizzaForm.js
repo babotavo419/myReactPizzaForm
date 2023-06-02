@@ -12,7 +12,7 @@ const PizzaForm = () => {
   });
 
   const handleChanges = (event) => {
-    // Handle changes for checkboxes differently
+ 
     if (event.target.type === 'checkbox') {
       setFormValues({
         ...formValues,
@@ -37,7 +37,7 @@ const PizzaForm = () => {
     axios.post('https://reqres.in/api/orders', formValues)
       .then(res => {
         console.log(res.data);
-        // Reset form values here if you like
+
         setFormValues({
           customerName: '',
           address: '',
