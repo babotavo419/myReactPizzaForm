@@ -16,7 +16,6 @@ const PizzaForm = () => {
   const [nameError, setNameError] = useState('');
   const [postError, setPostError] = useState('');
   const handleChanges = (event) => {
- 
     if (event.target.type === 'checkbox') {
       setFormValues({
         ...formValues,
@@ -32,10 +31,9 @@ const PizzaForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-  
+
     schema.validate(formValues)
       .then(() => {
-        
         axios.post('https://reqres.in/api/orders', formValues)
           .then(res => {
             console.log(res.data);
@@ -53,8 +51,7 @@ const PizzaForm = () => {
       })
       .catch((err) => {
         console.log(err.errors);
-        const nameErrors = err.errors.filter((error) => error.path === 'Name');
-        setNameError(nameErrors[0] || '');
+        setNameError(err.errors[0] || '');
       });
   };
   
