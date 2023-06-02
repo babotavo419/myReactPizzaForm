@@ -70,8 +70,8 @@ const PizzaForm = () => {
             value={formValues.Name} 
             onChange={handleChanges} />
             {nameError && 
-            <p>{nameError}
-            </p>}
+            <d>{nameError}
+            </d>}
     </label>
     </div>
     <div>
