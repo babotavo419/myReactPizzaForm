@@ -51,9 +51,10 @@ const PizzaForm = () => {
           .catch(err => console.log(err));
           setPostError('An error occurred while submitting the form. Please try again.');
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err.errors);
-        setNameError(err.errors[0]);
+        const nameErrors = err.errors.filter((error) => error.path === 'Name');
+        setNameError(nameErrors[0] || '');
       });
   };
   
@@ -73,6 +74,7 @@ const PizzaForm = () => {
             onChange={handleChanges}
             />
     </label>
+        {nameError && <div>{nameError}</div>}
     </div>
     <div>
         <label>
@@ -128,7 +130,6 @@ const PizzaForm = () => {
         type="submit">Add to Order
         </button>
     </div>
-        {nameError && <div>{nameError}</div>}
         {postError && <div>{postError}</div>}
       </form>
     </div>
