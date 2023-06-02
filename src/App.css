@@ -1,6 +1,6 @@
 .tavo-image {
-  width: 10px;  /* adjust as needed */
-  height: 50%; /* keeps the aspect ratio */
+  width: 100px; 
+  height: 2%;
 
 }
 
@@ -10,12 +10,12 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 200vh; /* vh is viewport height */
+    height: 300vh; 
     text-align: center;
   }
   
   .big-link {
-    font-size: 2em; /* em is relative to the current font-size */
+    font-size: 5em; 
     color: blue;
     text-decoration: none;
   }
