@@ -69,7 +69,6 @@ const PizzaForm = () => {
             <p>{nameError}
             </p>}
     </label>
-
         <label>
           Address
           <input id="address-input" name="address" value={formValues.address} onChange={handleChanges} />
@@ -87,7 +86,6 @@ const PizzaForm = () => {
             <option value="large">Large</option>
           </select>
         </label>
-        <div>
         <label>
         <input type="checkbox" name="toppings" value="cheese" onChange={handleChanges} />
             Cheese
@@ -108,7 +106,6 @@ const PizzaForm = () => {
         <input type="checkbox" name="toppings" value="ham" onChange={handleChanges} />
             Ham
         </label>
-        </div>
         <label>
           Special Instructions
           <input id="special-text" name="specialText" value={formValues.specialText} onChange={handleChanges} />
