@@ -36,8 +36,6 @@ const PizzaForm = () => {
       return;
     }
 
-    setNameError('');
-
     axios.post('https://reqres.in/api/orders', formValues)
       .then(res => {
         console.log(res.data);
