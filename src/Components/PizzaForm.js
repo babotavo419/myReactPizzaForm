@@ -92,6 +92,10 @@ const PizzaForm = () => {
         <input type="checkbox" name="toppings" value="chicken" onChange={handleChanges} />
             Chicken
         </label>
+        <label>
+        <input type="checkbox" name="toppings" value="ham" onChange={handleChanges} />
+            Ham
+        </label>
         </div>
         <label>
           Special Instructions
