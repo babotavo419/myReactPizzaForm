@@ -14,7 +14,7 @@ const PizzaForm = () => {
   });
 
   const [nameError, setNameError] = useState('');
-
+  const [postError, setPostError] = useState('');
   const handleChanges = (event) => {
  
     if (event.target.type === 'checkbox') {
@@ -49,6 +49,7 @@ const PizzaForm = () => {
             });
           })
           .catch(err => console.log(err));
+          setPostError('An error occurred while submitting the form. Please try again.');
       })
       .catch(err => {
         console.log(err.errors);
@@ -127,8 +128,9 @@ const PizzaForm = () => {
         type="submit">Add to Order
         </button>
     </div>
+        {nameError && <div>{nameError}</div>}
+        {postError && <div>{postError}</div>}
       </form>
-      {nameError && <div>{nameError}</div>}
     </div>
   );
 };
