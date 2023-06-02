@@ -30,9 +30,11 @@ const PizzaForm = () => {
     event.preventDefault();
 
     if (formValues.Name.length < 2) {
-      alert('Name must be at least 2 characters');
+      setNamError('Name must be at least 2 characters');
       return;
     }
+
+    setNamError('');
 
     axios.post('https://reqres.in/api/orders', formValues)
       .then(res => {
