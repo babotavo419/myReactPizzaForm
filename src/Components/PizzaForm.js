@@ -59,6 +59,8 @@ const PizzaForm = () => {
     <div>
       <h1>Big Tavo's Pizza</h1>
       <form id="pizza-form" onSubmit={handleSubmit}>
+    <div/>
+    <div>
     <label>
         Name
         <input id="name-input" 
@@ -69,6 +71,8 @@ const PizzaForm = () => {
             <p>{nameError}
             </p>}
     </label>
+    </div>
+    <div>
         <label>
           Address
           <input id="address-input" name="address" value={formValues.address} onChange={handleChanges} />
@@ -77,6 +81,8 @@ const PizzaForm = () => {
           Phone Number
           <input id="phone-number-input" name="phoneNumber" value={formValues.phoneNumber} onChange={handleChanges} />
         </label>
+    </div>
+    <div>
         <label>
           Size
           <select id="size-dropdown" name="size" value={formValues.size} onChange={handleChanges}>
@@ -86,6 +92,8 @@ const PizzaForm = () => {
             <option value="large">Large</option>
           </select>
         </label>
+    </div>
+    <div>
         <label>
         <input type="checkbox" name="toppings" value="cheese" onChange={handleChanges} />
             Cheese
@@ -106,11 +114,18 @@ const PizzaForm = () => {
         <input type="checkbox" name="toppings" value="ham" onChange={handleChanges} />
             Ham
         </label>
+    </div>
+    <div>
         <label>
           Special Instructions
           <input id="special-text" name="specialText" value={formValues.specialText} onChange={handleChanges} />
         </label>
-        <button id="order-button" type="submit">Add to Order</button>
+    </div>
+    <div>
+        <button id="order-button" 
+        type="submit">Add to Order
+        </button>
+    </div>
       </form>
     </div>
   );
