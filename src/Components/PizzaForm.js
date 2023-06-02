@@ -56,14 +56,17 @@ const PizzaForm = () => {
     <div>
       <h1>Big Tavo's Pizza</h1>
       <form id="pizza-form" onSubmit={handleSubmit}>
-        <label>
-          Name
-          <input id="name-input" 
-          name="Name" 
-          value={formValues.Name} 
-          onChange={handleChanges} />
-          {nameError && <div>{nameError}</div>}
-        </label>
+    <label>
+        Name
+        <input id="name-input" 
+            name="Name" 
+            value={formValues.Name} 
+            onChange={handleChanges} />
+            {nameError && 
+            <p>{nameError}
+            </p>}
+    </label>
+
         <label>
           Address
           <input id="address-input" name="address" value={formValues.address} onChange={handleChanges} />
