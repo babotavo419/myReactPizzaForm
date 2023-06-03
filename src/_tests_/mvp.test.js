@@ -78,7 +78,8 @@ if (routerVersionNum === 6) {
       expect(nameInput).toBeInTheDocument()
       fireEvent.input(nameInput, { target: { value: 'a' } })
       await waitFor(() => {
-        expect(screen.getByText('name must be at least 2 characters')).toBeInTheDocument()
+        const errorMessage = findByText(document.body, 'name must be at least 2 characters');
+        expect(errorMessage).toBeInTheDocument();
       })
       nameInput.value = ''
     });
