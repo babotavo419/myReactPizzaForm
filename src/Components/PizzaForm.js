@@ -15,6 +15,7 @@ const PizzaForm = () => {
 
   const [nameError, setNameError] = useState('');
   const [postError, setPostError] = useState('');
+
   const handleChanges = (event) => {
     if (event.target.type === 'checkbox') {
       setFormValues({
@@ -27,6 +28,14 @@ const PizzaForm = () => {
         [event.target.name]: event.target.value
       });
     }
+  };
+
+  const getErrorMessage = (matcher) => {
+    if (matcher && nameError && nameError.includes(matcher)) {
+      return <div>{nameError}</div>;
+    }
+
+    return null;
   };
 
   const handleSubmit = (event) => {
@@ -46,15 +55,18 @@ const PizzaForm = () => {
               specialText: ''
             });
           })
+        
           .catch(err => console.log(err));
           setPostError('An error occurred while submitting the form. Please try again.');
       })
+    
       .catch((err) => {
         console.log(err.errors);
         setNameError(err.errors[0] || '');
       });
+    
   };
-  
+
 
   return (
     <div>
@@ -70,7 +82,7 @@ const PizzaForm = () => {
             value={formValues.Name}
             onChange={handleChanges}
             />
-            {nameError && <div>{nameError}</div>}
+            {getErrorMessage('name must be at least 2 characters')}
     </label>
     </div>
     <div>
@@ -131,6 +143,7 @@ const PizzaForm = () => {
       </form>
     </div>
   );
+  
 };
 
 export default PizzaForm;
