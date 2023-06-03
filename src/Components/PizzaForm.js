@@ -139,7 +139,7 @@ const PizzaForm = () => {
         </button>
     </div>
         {postError && <div>{postError}</div>}
-        {nameError && <div>{nameError.toString()}</div>}
+        {nameError && <div>{nameError.toString('name must be at least 2 characters')}</div>}
       </form>
     </div>
   );
