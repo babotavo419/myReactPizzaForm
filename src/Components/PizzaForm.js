@@ -139,7 +139,7 @@ const PizzaForm = () => {
         </button>
     </div>
         {postError && <div>{postError}</div>}
-        {nameError && <div>{nameError}</div>}
+        {nameError && <div>{nameError.toString()}</div>}
       </form>
     </div>
   );
