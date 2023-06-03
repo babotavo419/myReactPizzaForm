@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import yup from 'yup';
-import schema from './valadation/formSchema'
+import * as yup from 'yup';
+import schema from './valadation/formSchema';
 
 const PizzaForm = () => {
   const [formValues, setFormValues] = useState({
@@ -15,6 +15,7 @@ const PizzaForm = () => {
 
   const [nameError, setNameError] = useState('');
   const [postError, setPostError] = useState('');
+
   const handleChanges = (event) => {
     if (event.target.type === 'checkbox') {
       setFormValues({
@@ -29,30 +30,41 @@ const PizzaForm = () => {
     }
   };
 
-  const handleSubmit = (event) => {
+  const validateForm = async () => {
+    try {
+      await schema.validate(formValues, { abortEarly: false });
+      setNameError('');
+      return true;
+    } catch (err) {
+      const nameErrors = err.inner.filter((error) => error.path === 'Name');
+      setNameError(nameErrors[0]?.message || '');
+      return false;
+    }
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    schema.validate(formValues)
-      .then(() => {
-        axios.post('https://reqres.in/api/orders', formValues)
-          .then(res => {
-            console.log(res.data);
-            setFormValues({
-              Name: '',
-              address: '',
-              phoneNumber: '',
-              size: '',
-              toppings: [],
-              specialText: ''
-            });
-          })
-          .catch(err => console.log(err));
-          setPostError('An error occurred while submitting the form. Please try again.');
-      })
-      .catch((err) => {
-        console.log(err.errors);
-        setNameError(err.errors[0] || '');
-      });
+    const isFormValid = await validateForm();
+
+    if (isFormValid) {
+      axios
+        .post('https://reqres.in/api/orders', formValues)
+        .then((res) => {
+          console.log(res.data);
+          setFormValues({
+            Name: '',
+            address: '',
+            phoneNumber: '',
+            size: '',
+            toppings: [],
+            specialText: ''
+          });
+        })
+        .catch((err) => console.log(err));
+    } else {
+      setPostError('An error occurred while submitting the form. Please try again.');
+    }
   };
   
 
@@ -71,7 +83,6 @@ const PizzaForm = () => {
             onChange={handleChanges}
             />
     </label>
-        {nameError && <div>{nameError}</div>}
     </div>
     <div>
         <label>
@@ -128,6 +139,7 @@ const PizzaForm = () => {
         </button>
     </div>
         {postError && <div>{postError}</div>}
+        {nameError && <div>{nameError}</div>}
       </form>
     </div>
   );
