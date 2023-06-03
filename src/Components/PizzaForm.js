@@ -27,8 +27,15 @@ const PizzaForm = () => {
         ...formValues,
         [event.target.name]: event.target.value
       });
+  
+      if (event.target.name === 'Name') {
+        schema.validateAt('Name', { [event.target.name]: event.target.value })
+          .then(() => setNameError(''))
+          .catch(err => setNameError(err.errors[0]));
+      }
     }
   };
+  
 
   const getErrorMessage = (matcher) => {
     if (matcher && nameError && nameError.includes(matcher)) {
