@@ -82,9 +82,9 @@ const PizzaForm = () => {
             value={formValues.Name}
             onChange={handleChanges}
             />
-            {getErrorMessage('name must be at least 2 characters')}
     </label>
     </div>
+    {getErrorMessage('name must be at least 2 characters')}
     <div>
         <label>
           Address
