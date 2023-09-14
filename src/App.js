@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import PizzaForm from './Components/PizzaForm';
-import './App.css'; 
+import './App.scss'; 
 
 const App = () => {
   return (

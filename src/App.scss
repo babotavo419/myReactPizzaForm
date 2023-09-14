@@ -1,0 +1,33 @@
+.tavo-image {
+  width: 100px;
+  height: auto;
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh; 
+  text-align: center;
+
+
+  background: linear-gradient(135deg, #f3e7e9, #e3eeff);
+}
+
+.big-link {
+  font-size: 5em;
+  color: #007BFF; 
+  text-decoration: none;
+
+  &:hover, 
+  &:focus {
+    color: #0056b3; 
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  }
+
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+  
+  
